@@ -34,11 +34,10 @@
         </Grid.RowDefinitions>
 
         <StackPanel VerticalAlignment="Center"
-                    Style="{StaticResource LeftColumn}"
-                    DataContext="{Binding Game}">
+                    Style="{StaticResource LeftColumn}">
             <GroupBox Header="Capa">
                 <StackPanel>
-                    <Image Source="{Binding Cover}"
+                    <Image Source="{Binding Game.Cover}"
                            Style="{StaticResource Cover}"
                            Grid.RowSpan="4" />
                     <Button Content="Selecionar" />
@@ -48,19 +47,19 @@
 
         <StackPanel VerticalAlignment="Center"
                     Style="{StaticResource RightColumn}"
-                    DataContext="{Binding Game, Mode=TwoWay}"
                     Grid.Column="1">
             <Label Content="Nome:"
                    Style="{StaticResource LabelStyle}" />
-            <TextBox Text="{Binding Name, Mode=TwoWay}" />
+            <TextBox Text="{Binding Game.Name, Mode=TwoWay}" />
             <Label Content="Lançamento:"
                    Style="{StaticResource LabelStyle}" />
-            <TextBox Text="{Binding ReleaseYear, Mode=TwoWay}" />
+            <TextBox Text="{Binding Game.ReleaseYear, Mode=TwoWay}" />
             <Label Content="{Binding Name}"/>
             <Label Content="{Binding ReleaseYear}"/>
         </StackPanel>
 
         <Button Content="Salvar"
+                Command="{Binding SaveCommand}"
                 Grid.Column="0"
                 Grid.Row="4"
                 Grid.ColumnSpan="2" />

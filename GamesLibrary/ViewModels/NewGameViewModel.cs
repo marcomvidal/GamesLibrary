@@ -1,14 +1,30 @@
-﻿using GamesLibrary.Models;
+﻿using GamesLibrary.Commands;
+using GamesLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using System.Windows;
 
 namespace GamesLibrary.ViewModels
 {
     public class NewGameViewModel : ViewModel
     {
+        private Game _game;
+
+        public Game Game
+        {
+            get => _game;
+            set
+            {
+                _game = value;
+                OnPropertyChanged("Game");
+            }
+        }
+
+        public SaveCommand SaveCommand { get; set; }
+
         public NewGameViewModel()
         {
             Game = new Game
@@ -20,18 +36,13 @@ namespace GamesLibrary.ViewModels
                     Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
                     "SonicTheHedgehog.jpg")
             };
+
+            SaveCommand = new SaveCommand(this);
         }
 
-        private Game _game;
-
-        public Game Game
+        public void Save()
         {
-            get => _game;
-            set
-            {
-                _game = value;
-                OnPropertyChanged("Game");
-            }
+            MessageBox.Show("Saved!");
         }
     }
 }
