@@ -1,0 +1,51 @@
+﻿<Window x:Class="GamesLibrary.Views.GameSelectionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamesLibrary.Views"
+        xmlns:vm="clr-namespace:GamesLibrary.ViewModels"
+        mc:Ignorable="d"
+        Title="GameSelectionView" Height="400" Width="400">
+
+    <Window.Resources>
+        <vm:GameSelectionViewModel x:Key="vm" />
+
+        <Style x:Key="DockPanelStyle" TargetType="{x:Type FrameworkElement}">
+            <Setter Property="Margin" Value="0, 0, 0, 5" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Style="{StaticResource WindowContainerStyle}"
+                DataContext="{StaticResource vm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <DockPanel Style="{StaticResource DockPanelStyle}">
+            <Label Content="Buscar:" />
+            <TextBox Grid.Column="1" />
+        </DockPanel>
+        
+        <ListView ItemsSource="{Binding Games}"
+                  Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Margin="5">
+                        <Image Source="{Binding Cover}"
+                               Height="75" />
+                        <StackPanel Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0">
+                            <TextBlock Text="{Binding Name}"
+                                       FontSize="18"
+                                       FontWeight="Bold" />
+                            <TextBlock Text="{Binding ReleaseYear}" />
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
