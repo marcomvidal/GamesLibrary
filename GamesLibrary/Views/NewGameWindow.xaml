@@ -50,12 +50,10 @@
                     Grid.Column="1">
             <Label Content="Nome:"
                    Style="{StaticResource LabelStyle}" />
-            <TextBox Text="{Binding Game.Name, Mode=TwoWay}" />
+            <TextBox Text="{Binding Game.Name}" />
             <Label Content="Lançamento:"
                    Style="{StaticResource LabelStyle}" />
-            <TextBox Text="{Binding Game.ReleaseYear, Mode=TwoWay}" />
-            <Label Content="{Binding Name}"/>
-            <Label Content="{Binding ReleaseYear}"/>
+            <TextBox Text="{Binding Game.ReleaseYear}" />
         </StackPanel>
 
         <Button Content="Salvar"

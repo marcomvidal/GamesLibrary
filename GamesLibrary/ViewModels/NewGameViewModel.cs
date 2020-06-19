@@ -1,4 +1,5 @@
 ﻿using GamesLibrary.Commands;
+using GamesLibrary.Data;
 using GamesLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace GamesLibrary.ViewModels
 {
     public class NewGameViewModel : ViewModel
     {
+        private Repository _repository;
         private Game _game;
 
         public Game Game
@@ -27,6 +29,8 @@ namespace GamesLibrary.ViewModels
 
         public NewGameViewModel()
         {
+            _repository = new Repository();
+            
             Game = new Game
             {
                 Id = 1,
@@ -42,6 +46,7 @@ namespace GamesLibrary.ViewModels
 
         public void Save()
         {
+            _repository.Create(_game);
             MessageBox.Show("Saved!");
         }
     }

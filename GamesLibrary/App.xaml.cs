@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GamesLibrary.Data;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,12 @@ namespace GamesLibrary
     /// </summary>
     public partial class App : Application
     {
+        private Database _database;
+
+        public App()
+        {
+            _database = new Database();
+            _database.Setup();
+        }
     }
 }

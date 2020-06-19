@@ -4,7 +4,6 @@ C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\bin\Debug\netcoreapp3.1\Ga
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\bin\Debug\netcoreapp3.1\GamesLibrary.runtimeconfig.dev.json
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\bin\Debug\netcoreapp3.1\GamesLibrary.dll
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\bin\Debug\netcoreapp3.1\GamesLibrary.pdb
-C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary.csprojAssemblyReference.cache
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary_MarkupCompile.cache
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary_MarkupCompile.lref
@@ -19,3 +18,4 @@ C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Ap
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Views\NewGameWindow.g.cs
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Views\NewGameWindow.baml
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary.csprojAssemblyReference.cache
