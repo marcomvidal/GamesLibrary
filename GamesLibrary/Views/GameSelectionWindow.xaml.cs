@@ -44,16 +44,12 @@ namespace GamesLibrary.Views
                 .ToList();
         }
 
-        private void GamesListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void GameWindow_Open(object sender, RoutedEventArgs e)
         {
-            var window = new GameWindow(GamesListView.SelectedItem as Game);
-            window.ShowDialog();
-            GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
-        }
+            var window = GamesListView.SelectedItem != null ?
+                new GameWindow(GamesListView.SelectedItem as Game) :
+                new GameWindow();
 
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new GameWindow();
             window.ShowDialog();
             GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
         }

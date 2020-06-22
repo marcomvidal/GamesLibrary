@@ -27,11 +27,12 @@
 
         <ListView x:Name="GamesListView"
                   Grid.Row="1"
-                  MouseDoubleClick="GamesListView_MouseDoubleClick">
+                  MouseDoubleClick="GameWindow_Open">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="EditMenuItem"
-                              Header="Editar" />
+                              Header="Editar"
+                              Click="GameWindow_Open" />
                     <MenuItem x:Name="DeleteMenuItem"
                               Header="Excluir"
                               Click="DeleteMenuItem_Click"/>
@@ -57,6 +58,6 @@
         <Button x:Name="CreateButton"
                 Content="Cadastrar"
                 Grid.Row="2"
-                Click="CreateButton_Click"/>
+                Click="GameWindow_Open"/>
     </Grid>
 </Window>
