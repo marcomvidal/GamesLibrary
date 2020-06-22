@@ -3,38 +3,44 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GamesLibrary.Views"
-        xmlns:vm="clr-namespace:GamesLibrary.ViewModels"
         mc:Ignorable="d"
-        Title="GameSelectionView" Height="400" Width="400">
+        Title="GameSelectionView" Height="400" Width="400"
+        Loaded="Window_Loaded">
 
     <Window.Resources>
-        <vm:GameSelectionViewModel x:Key="vm" />
-
         <Style x:Key="DockPanelStyle" TargetType="{x:Type FrameworkElement}">
             <Setter Property="Margin" Value="0, 0, 0, 5" />
         </Style>
     </Window.Resources>
 
-    <Grid Style="{StaticResource WindowContainerStyle}"
-                DataContext="{StaticResource vm}">
+    <Grid Style="{StaticResource WindowContainerStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
-        <DockPanel Style="{StaticResource DockPanelStyle}">
-            <Label Content="Buscar:" />
-            <TextBox Grid.Column="1" />
-        </DockPanel>
-        
-        <ListView ItemsSource="{Binding Games}"
-                  Grid.Row="1">
+
+        <StackPanel Style="{StaticResource DockPanelStyle}">
+            <Label Content="Busca:" Style="{StaticResource FormLabelStyle}" />
+            <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" />
+        </StackPanel>
+
+        <ListView x:Name="GamesListView"
+                  Grid.Row="1"
+                  MouseDoubleClick="GamesListView_MouseDoubleClick">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="EditMenuItem"
+                              Header="Editar" />
+                    <MenuItem x:Name="DeleteMenuItem"
+                              Header="Excluir"
+                              Click="DeleteMenuItem_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <DockPanel Margin="5">
-                        <Image Source="{Binding Cover}"
-                               Height="75" />
+                        <Image Height="75" Source="{Binding Cover}" />
                         <StackPanel Grid.Column="1"
                                     VerticalAlignment="Center"
                                     Margin="10, 0, 0, 0">
@@ -47,5 +53,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button x:Name="CreateButton"
+                Content="Cadastrar"
+                Grid.Row="2"
+                Click="CreateButton_Click"/>
     </Grid>
 </Window>

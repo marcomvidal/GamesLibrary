@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\App.xaml
-2715286318
+2272434110
 
-11516582415
+71485485092
 197281120940
-Views\GameSelectionWindow.xaml;Views\NewGameWindow.xaml;
+Views\GameSelectionWindow.xaml;Views\GameWindow.xaml;
 
 False
 

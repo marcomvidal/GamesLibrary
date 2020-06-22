@@ -15,10 +15,6 @@ C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Ga
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary.pdb
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary.genruntimeconfig.cache
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\App.baml
-C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Views\NewGameWindow.g.cs
-C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Views\NewGameWindow.baml
-C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
-C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary.csprojAssemblyReference.cache
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\bin\Debug\netcoreapp3.1\SQLite-net.dll
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\bin\Debug\netcoreapp3.1\SQLitePCLRaw.nativelibrary.dll
@@ -39,3 +35,6 @@ C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\bin\Debug\netcoreapp3.1\ru
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary.csproj.CopyComplete
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Views\GameSelectionWindow.g.cs
 C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Views\GameSelectionWindow.baml
+C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Views\GameWindow.g.cs
+C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\Views\GameWindow.baml
+C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\GamesLibrary.csprojAssemblyReference.cache

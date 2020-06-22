@@ -10,7 +10,7 @@ namespace GamesLibrary.Data
 
         public Repository()
         {
-            database = new Database();
+            database = new Database(App.DatabaseLocation);
         }
 
         public int Create(object entry)

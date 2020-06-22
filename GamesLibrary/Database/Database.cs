@@ -7,19 +7,16 @@ namespace GamesLibrary.Data
 {
     public class Database
     {
-        private const string fileName = "games-library.db";
-        private readonly string filePath;
+        private readonly string _path;
 
-        public Database()
+        public Database(string path)
         {
-            filePath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                fileName);
+            _path = path;
         }
 
         public SQLiteConnection Connection()
         {
-            return new SQLiteConnection(filePath);
+            return new SQLiteConnection(_path);
         }
 
         public void Setup()
