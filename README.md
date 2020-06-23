@@ -14,7 +14,7 @@ Aplicação desktop para criação de bibliotecas de jogos.
 - Exibição de imagens
 
 ## Execução
-Tendo o .NET Core 3.1 instalado, basta executar o arquivo `GamesLibrary.exe` dentro do diretório `Executable`.
+Tendo o .NET Core 3.1 instalado, basta executar o arquivo `GamesLibrary.exe` dentro de `/Executable`.
 
 ## Screenshots
 * [Listagem de jogos](https://raw.githubusercontent.com/marcomvidal/GamesLibrary/master/screenshot_listagem.png)
