@@ -11,7 +11,13 @@ namespace GamesLibrary.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int ReleaseYear { get; set; }
-        public string CoverPath { get; set; }
+
+        private string _coverPath;
+        public string CoverPath
+        {
+            get { return _coverPath; }
+            set { _coverPath = Path.Combine(App.ImagesLocation, value); }
+        }
 
         [Ignore]
         public BitmapImage Cover

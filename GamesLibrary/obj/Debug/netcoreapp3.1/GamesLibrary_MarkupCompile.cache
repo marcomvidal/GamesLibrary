@@ -1,20 +1,20 @@
 ﻿GamesLibrary
-
+1.0.0.0
 
 winexe
 C#
 .cs
-C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\
+c:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\obj\Debug\netcoreapp3.1\
 GamesLibrary
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\App.xaml
-2272434110
+c:\Users\Marco\source\repos\GamesLibrary\GamesLibrary\App.xaml
+2700153682
 
-71485485092
-197281120940
+9-426557563
+197-1009374078
 Views\GameSelectionWindow.xaml;Views\GameWindow.xaml;
 
-False
+True
 

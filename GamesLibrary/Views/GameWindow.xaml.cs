@@ -26,12 +26,14 @@ namespace GamesLibrary.Views
     {
         private readonly Repository _repository;
         public Game Game { get; set; }
+        private string _selectedImagePath;
 
         public GameWindow()
         {
             InitializeComponent();
             _repository = new Repository();
             Game = new Game();
+            Title += "Novo jogo";
         }
         
         public GameWindow(Game game)
@@ -39,11 +41,12 @@ namespace GamesLibrary.Views
             InitializeComponent();
             _repository = new Repository();
             Game = game;
+            Title += game.Name;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Game != null)
+            if (Game.Id != 0)
             {
                 NameTextBox.Text = Game.Name;
                 ReleaseYearTextBox.Text = Game.ReleaseYear.ToString();
@@ -53,18 +56,18 @@ namespace GamesLibrary.Views
 
         private void SelectImage_Click(object sender, RoutedEventArgs e)
         {
-            var fileDialog = new OpenFileDialog
+            var dialog = new OpenFileDialog
             {
                 Title = "Selecione uma imagem",
                 Filter = "Arquivos de imagens (*.gif, *.jpeg, *.jpg, *.png)|*.gif;*.jpeg;*.jpg;*.png",
-                InitialDirectory = App.ImagesLocation
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
             };
 
-            if (fileDialog.ShowDialog() == true)
-            {
-                Game.CoverPath = fileDialog.FileName;
-                CoverImage.Source = Game.Cover;
-            }
+            if (dialog.ShowDialog() == false) { return; }
+
+            Game.CoverPath = dialog.SafeFileName;
+            _selectedImagePath = dialog.FileName;
+            CoverImage.Source = Game.Cover;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -75,6 +78,7 @@ namespace GamesLibrary.Views
             if (Game.Id == 0)
             {
                 _repository.Create(Game);
+                File.Copy(_selectedImagePath, Game.CoverPath, true);
             }
             else
             {

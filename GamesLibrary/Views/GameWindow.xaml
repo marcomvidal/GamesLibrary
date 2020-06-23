@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GamesLibrary.Views"
         mc:Ignorable="d"
-        Title="Novo jogo" Height="400" Width="400"
+        Title="Jogo: " Height="400" Width="400"
         Loaded="Window_Loaded">
 
     <Window.Resources>

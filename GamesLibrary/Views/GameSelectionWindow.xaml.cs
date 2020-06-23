@@ -67,6 +67,7 @@ namespace GamesLibrary.Views
             if (dialog == MessageBoxResult.Yes)
             {
                 _repository.Delete(GamesListView.SelectedItem as Game);
+                File.Delete(selectedGame.CoverPath);
                 GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
             }
         }

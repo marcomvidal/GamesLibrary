@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace GamesLibrary
 {
@@ -21,9 +22,7 @@ namespace GamesLibrary
         {
             get
             {
-                return Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                   "games-library.db");
+                return Path.Combine(Environment.CurrentDirectory, "data.db");
             }
         }
 
@@ -31,7 +30,7 @@ namespace GamesLibrary
         {
             get
             { 
-                return Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                return Path.Combine(Environment.CurrentDirectory, "Images");
             }
         }
 
@@ -39,6 +38,11 @@ namespace GamesLibrary
         {
             _database = new Database(DatabaseLocation);
             _database.Setup();
+
+            if (!Directory.Exists(ImagesLocation))
+            {
+                Directory.CreateDirectory(ImagesLocation);
+            }
         }
     }
 }

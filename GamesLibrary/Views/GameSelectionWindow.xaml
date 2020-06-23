@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="GameSelectionView" Height="400" Width="400"
+        Title="Coletânea de Jogos" Height="400" Width="400"
         Loaded="Window_Loaded">
 
     <Window.Resources>
@@ -21,8 +21,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Style="{StaticResource DockPanelStyle}">
-            <Label Content="Busca:" Style="{StaticResource FormLabelStyle}" />
-            <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" />
+            <Label Content="Busca:"
+                   Style="{StaticResource FormLabelStyle}" />
+            <TextBox x:Name="SearchTextBox"
+                     TextChanged="SearchTextBox_TextChanged" />
+            
         </StackPanel>
 
         <ListView x:Name="GamesListView"
@@ -32,10 +35,18 @@
                 <ContextMenu>
                     <MenuItem x:Name="EditMenuItem"
                               Header="Editar"
-                              Click="GameWindow_Open" />
+                              Click="GameWindow_Open">
+                        <MenuItem.Icon>
+                            <Image Source="../Icons/EditWindow_16x.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <MenuItem x:Name="DeleteMenuItem"
                               Header="Excluir"
-                              Click="DeleteMenuItem_Click"/>
+                              Click="DeleteMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="../Icons/DeleteQuery_16x.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.ItemTemplate>
