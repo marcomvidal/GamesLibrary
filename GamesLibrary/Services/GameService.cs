@@ -49,10 +49,11 @@ namespace GamesLibrary.Services
 
         public void CleanUnusedCovers()
         {
-            var gamesCovers = new Repository().OrderBy<Game>(game => game.Name).Select(game => game.CoverPath);
+            //var gamesCovers = new Repository().OrderBy<Game>(game => game.Name).Select(game => game.CoverPath);
 
             Directory.GetFiles(App.ImagesLocation)
-                .Where(file => !gamesCovers.Contains(file))
+                //.Where(file => !gamesCovers.Contains(file))
+                .Except(AllSortedByName().Select(game => game.CoverPath))
                 .ToList()
                 .ForEach(file => File.Delete(file));
         }
