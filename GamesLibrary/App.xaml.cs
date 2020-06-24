@@ -1,4 +1,5 @@
 ﻿using GamesLibrary.Data;
+using GamesLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -38,11 +39,28 @@ namespace GamesLibrary
         {
             _database = new Database(DatabaseLocation);
             _database.Setup();
+            SetupFiles();
+        }
 
+        private void SetupFiles()
+        {
             if (!Directory.Exists(ImagesLocation))
             {
                 Directory.CreateDirectory(ImagesLocation);
+                return;
             }
+
+            CleanUnusedCovers();
+        }
+
+        private void CleanUnusedCovers()
+        {
+            var gamesCovers = new Repository().OrderBy<Game>(game => game.Name).Select(game => game.CoverPath);
+
+            Directory.GetFiles(ImagesLocation)
+                .Where(file => !gamesCovers.Contains(file))
+                .ToList()
+                .ForEach(file => File.Delete(file));
         }
     }
 }
