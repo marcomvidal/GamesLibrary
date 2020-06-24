@@ -11,23 +11,23 @@ namespace GamesLibrary.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int ReleaseYear { get; set; }
-
-        private string _coverPath;
-        public string CoverPath
-        {
-            get { return _coverPath; }
-            set { _coverPath = Path.Combine(App.ImagesLocation, value); }
-        }
+        public string CoverFile { get; set; }
 
         [Ignore]
-        public BitmapImage Cover
+        public string CoverPath
         {
             get
             {
-                if (CoverPath == null)
-                {
-                    return new BitmapImage();
-                }
+                return Path.Combine(App.ImagesLocation, CoverFile);
+            }
+        }
+
+        [Ignore]
+        public BitmapImage CoverImage
+        {
+            get
+            {
+                if (CoverPath == null) { return new BitmapImage(); }
 
                 return new BitmapImage(
                     new Uri(Path.Combine(App.ImagesLocation, CoverPath)));

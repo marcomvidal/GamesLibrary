@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Coletânea de Jogos" Height="400" Width="400"
+        Title="Coletânea de Jogos"
+        Height="400" Width="400"
         Loaded="Window_Loaded"
+        Closing="Window_Closing"
         FocusManager.FocusedElement="{Binding ElementName=SearchTextBox}">
 
     <Window.Resources>
@@ -71,7 +73,7 @@
                                 </MenuItem>
                             </ContextMenu>
                         </DockPanel.ContextMenu>
-                        <Image Source="{Binding Cover}"
+                        <Image Source="{Binding CoverImage}"
                                Style="{StaticResource ImageStyle}"/>
                         <StackPanel Style="{StaticResource GamePanelStyle}">
                             <TextBlock Text="{Binding Name}"

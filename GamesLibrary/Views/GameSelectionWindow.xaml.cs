@@ -76,5 +76,13 @@ namespace GamesLibrary.Views
                 File.Delete(selectedGame.CoverPath);
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            foreach (var file in Directory.GetFiles(App.ImagesLocation))
+            {
+                MessageBox.Show(file);
+            }
+        }
     }
 }

@@ -50,7 +50,7 @@ namespace GamesLibrary.Views
             {
                 NameTextBox.Text = Game.Name;
                 ReleaseYearTextBox.Text = Game.ReleaseYear.ToString();
-                CoverImage.Source = Game.Cover;
+                CoverImage.Source = Game.CoverImage;
             }
         }
 
@@ -65,7 +65,7 @@ namespace GamesLibrary.Views
 
             if (dialog.ShowDialog() == false) { return; }
 
-            Game.CoverPath = dialog.SafeFileName;
+            Game.CoverFile = dialog.SafeFileName;
             _selectedImagePath = dialog.FileName;
             CoverImage.Source = new BitmapImage(new Uri(dialog.FileName));
         }
