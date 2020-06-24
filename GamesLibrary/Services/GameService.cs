@@ -1,11 +1,8 @@
 ﻿using GamesLibrary.Data;
 using GamesLibrary.Models;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace GamesLibrary.Services
 {
@@ -49,10 +46,7 @@ namespace GamesLibrary.Services
 
         public void CleanUnusedCovers()
         {
-            //var gamesCovers = new Repository().OrderBy<Game>(game => game.Name).Select(game => game.CoverPath);
-
             Directory.GetFiles(App.ImagesLocation)
-                //.Where(file => !gamesCovers.Contains(file))
                 .Except(AllSortedByName().Select(game => game.CoverPath))
                 .ToList()
                 .ForEach(file => File.Delete(file));
@@ -60,7 +54,7 @@ namespace GamesLibrary.Services
 
         public string GenerateCoverName(string sourceFileName)
         {
-            int nextId = _repository.GetAll<Game>().LastOrDefault() is Game game ? 
+            int nextId = _repository.GetAll<Game>().LastOrDefault() is Game game ?
                 (game.Id + 1) : 1;
 
             return $"{nextId}.{sourceFileName.Split('.')[1]}";

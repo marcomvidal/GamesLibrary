@@ -1,19 +1,7 @@
-﻿using GamesLibrary.Data;
-using GamesLibrary.Models;
+﻿using GamesLibrary.Models;
 using GamesLibrary.Services;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GamesLibrary.Views
 {
@@ -65,7 +53,7 @@ namespace GamesLibrary.Views
                 $"Excluir {selectedGame.Name}?",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning);
-            
+
             if (dialog == MessageBoxResult.Yes)
             {
                 _service.Delete(selectedGame);
