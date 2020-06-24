@@ -1,10 +1,12 @@
 ﻿using GamesLibrary.Data;
 using GamesLibrary.Models;
+using GamesLibrary.Services;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,14 +26,14 @@ namespace GamesLibrary.Views
     /// </summary>
     public partial class GameWindow : Window
     {
-        private readonly Repository _repository;
+        private readonly GameService _service;
         public Game Game { get; set; }
         private string _selectedImagePath;
 
         public GameWindow()
         {
             InitializeComponent();
-            _repository = new Repository();
+            _service = new GameService();
             Game = new Game();
             Title += "Novo jogo";
         }
@@ -39,7 +41,7 @@ namespace GamesLibrary.Views
         public GameWindow(Game game)
         {
             InitializeComponent();
-            _repository = new Repository();
+            _service = new GameService();
             Game = game;
             Title += game.Name;
         }
@@ -65,26 +67,27 @@ namespace GamesLibrary.Views
 
             if (dialog.ShowDialog() == false) { return; }
 
-            Game.CoverFile = dialog.SafeFileName;
+            Game.CoverFile = _service.GenerateCoverName(dialog.SafeFileName);
             _selectedImagePath = dialog.FileName;
             CoverImage.Source = new BitmapImage(new Uri(dialog.FileName));
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            if (!int.TryParse(ReleaseYearTextBox.Text, out int releaseYear))
+            {
+                MessageBox.Show(
+                    "Ano de lançamento deve ser um número inteiro.",
+                    "Erro",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
             Game.Name = NameTextBox.Text;
-            Game.ReleaseYear = int.Parse(ReleaseYearTextBox.Text);
-            
-            if (Game.Id == 0)
-            {
-                _repository.Create(Game);
-                File.Copy(_selectedImagePath, Game.CoverPath, true);
-            }
-            else
-            {
-                _repository.Update(Game);
-            }
-            
+            Game.ReleaseYear = releaseYear;
+            _service.Save(Game, _selectedImagePath);
             Close();
         }
     }

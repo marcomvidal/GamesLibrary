@@ -1,5 +1,6 @@
 ﻿using GamesLibrary.Data;
 using GamesLibrary.Models;
+using GamesLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,27 +22,23 @@ namespace GamesLibrary.Views
     /// </summary>
     public partial class GameSelectionView : Window
     {
-        private readonly Repository _repository;
+        private readonly GameService _service;
 
         public GameSelectionView()
         {
             InitializeComponent();
-            _repository = new Repository();
+            _service = new GameService();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
+            GamesListView.ItemsSource = _service.AllSortedByName();
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string term = (sender as TextBox).Text.ToString().ToLower();
-
-            GamesListView.ItemsSource = _repository
-                .OrderBy<Game>(game => game.Name)
-                .Where(game => game.Name.ToLower().Contains(term))
-                .ToList();
+            string term = (sender as TextBox).Text.ToString();
+            GamesListView.ItemsSource = _service.FindByTermInsensitive(term);
         }
 
         private void EditOption_Click(object sender, RoutedEventArgs e)
@@ -49,14 +46,14 @@ namespace GamesLibrary.Views
             if (GamesListView.SelectedItem is Game game)
             {
                 new GameWindow(game).ShowDialog();
-                GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
+                GamesListView.ItemsSource = _service.AllSortedByName();
             }
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             new GameWindow().ShowDialog();
-            GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
+            GamesListView.ItemsSource = _service.AllSortedByName();
         }
 
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
@@ -71,8 +68,8 @@ namespace GamesLibrary.Views
             
             if (dialog == MessageBoxResult.Yes)
             {
-                _repository.Delete(selectedGame);
-                GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
+                _service.Delete(selectedGame);
+                GamesListView.ItemsSource = _service.AllSortedByName();
             }
         }
     }

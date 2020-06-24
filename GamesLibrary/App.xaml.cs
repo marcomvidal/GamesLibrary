@@ -1,5 +1,6 @@
 ﻿using GamesLibrary.Data;
 using GamesLibrary.Models;
+using GamesLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -50,17 +51,7 @@ namespace GamesLibrary
                 return;
             }
 
-            CleanUnusedCovers();
-        }
-
-        private void CleanUnusedCovers()
-        {
-            var gamesCovers = new Repository().OrderBy<Game>(game => game.Name).Select(game => game.CoverPath);
-
-            Directory.GetFiles(ImagesLocation)
-                .Where(file => !gamesCovers.Contains(file))
-                .ToList()
-                .ForEach(file => File.Delete(file));
+            new GameService().CleanUnusedCovers();
         }
     }
 }
