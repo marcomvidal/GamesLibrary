@@ -44,13 +44,18 @@ namespace GamesLibrary.Views
                 .ToList();
         }
 
-        private void GameWindow_Open(object sender, RoutedEventArgs e)
+        private void EditOption_Click(object sender, RoutedEventArgs e)
         {
-            var window = GamesListView.SelectedItem != null ?
-                new GameWindow(GamesListView.SelectedItem as Game) :
-                new GameWindow();
+            if (GamesListView.SelectedItem is Game game)
+            {
+                new GameWindow(game).ShowDialog();
+                GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
+            }
+        }
 
-            window.ShowDialog();
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            new GameWindow().ShowDialog();
             GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
         }
 
@@ -66,9 +71,9 @@ namespace GamesLibrary.Views
             
             if (dialog == MessageBoxResult.Yes)
             {
-                _repository.Delete(GamesListView.SelectedItem as Game);
-                File.Delete(selectedGame.CoverPath);
+                _repository.Delete(selectedGame);
                 GamesListView.ItemsSource = _repository.OrderBy<Game>(game => game.Name);
+                File.Delete(selectedGame.CoverPath);
             }
         }
     }

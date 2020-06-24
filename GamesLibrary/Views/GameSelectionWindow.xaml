@@ -12,6 +12,23 @@
         <Style x:Key="DockPanelStyle" TargetType="{x:Type FrameworkElement}">
             <Setter Property="Margin" Value="0, 0, 0, 5" />
         </Style>
+        <Style x:Key="ImageStyle" TargetType="{x:Type Image}">
+            <Setter Property="Height" Value="100" />
+            <Setter Property="Margin" Value="0, 0, 10, 0" />
+        </Style>
+        <Style x:Key="GamePanelStyle" TargetType="{x:Type FrameworkElement}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="1" />
+        </Style>
+        <Style x:Key="GameTextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="MinWidth" Value="255" />
+        </Style>
+        <Style x:Key="GameTitleStyle"
+               TargetType="{x:Type TextBlock}"
+               BasedOn="{StaticResource GameTextStyle}">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
     </Window.Resources>
 
     <Grid Style="{StaticResource WindowContainerStyle}">
@@ -30,38 +47,37 @@
         </StackPanel>
 
         <ListView x:Name="GamesListView"
+                  MouseDoubleClick="EditOption_Click"
                   Grid.Row="1"
-                  MouseDoubleClick="GameWindow_Open"
                   TabIndex="1">
-            <ListView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem x:Name="EditMenuItem"
-                              Header="Editar"
-                              Click="GameWindow_Open">
-                        <MenuItem.Icon>
-                            <Image Source="../Icons/EditWindow_16x.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="DeleteMenuItem"
-                              Header="Excluir"
-                              Click="DeleteMenuItem_Click">
-                        <MenuItem.Icon>
-                            <Image Source="../Icons/DeleteQuery_16x.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </ContextMenu>
-            </ListView.ContextMenu>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel Margin="5">
-                        <Image Height="75" Source="{Binding Cover}" />
-                        <StackPanel Grid.Column="1"
-                                    VerticalAlignment="Center"
-                                    Margin="10, 0, 0, 0">
+                    <DockPanel Style="{StaticResource GamePanelStyle}">
+                        <DockPanel.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="EditMenuItem"
+                                          Header="Editar"
+                                          Click="EditOption_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="../Icons/EditWindow_16x.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="DeleteMenuItem"
+                                          Header="Excluir"
+                                          Click="DeleteMenuItem_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="../Icons/DeleteQuery_16x.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </DockPanel.ContextMenu>
+                        <Image Source="{Binding Cover}"
+                               Style="{StaticResource ImageStyle}"/>
+                        <StackPanel Style="{StaticResource GamePanelStyle}">
                             <TextBlock Text="{Binding Name}"
-                                       FontSize="18"
-                                       FontWeight="Bold" />
-                            <TextBlock Text="{Binding ReleaseYear}" />
+                                       Style="{StaticResource GameTitleStyle}" />
+                            <TextBlock Text="{Binding ReleaseYear}"
+                                       Style="{StaticResource GameTextStyle}" />
                         </StackPanel>
                     </DockPanel>
                 </DataTemplate>
@@ -70,8 +86,8 @@
 
         <Button x:Name="CreateButton"
                 Content="Cadastrar"
+                Click="CreateButton_Click"
                 Grid.Row="2"
-                Click="GameWindow_Open"
                 TabIndex="2" />
     </Grid>
 </Window>
