@@ -67,7 +67,7 @@ namespace GamesLibrary.Views
 
             Game.CoverPath = dialog.SafeFileName;
             _selectedImagePath = dialog.FileName;
-            CoverImage.Source = Game.Cover;
+            CoverImage.Source = new BitmapImage(new Uri(dialog.FileName));
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
