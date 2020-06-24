@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:GamesLibrary.Views"
         mc:Ignorable="d"
         Title="Jogo: " Height="400" Width="400"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        FocusManager.FocusedElement="{Binding ElementName=NameTextBox}">
 
     <Window.Resources>
         <Style x:Key="LeftColumn"
@@ -42,7 +43,8 @@
                            Grid.RowSpan="4" />
                     <Button x:Name="SelectImage"
                             Content="Selecionar"
-                            Click="SelectImage_Click" />
+                            Click="SelectImage_Click"
+                            TabIndex="2" />
                 </StackPanel>
             </GroupBox>
         </StackPanel>
@@ -51,10 +53,12 @@
                     Grid.Column="1">
             <Label Content="Nome:"
                    Style="{StaticResource FormLabelStyle}" />
-            <TextBox x:Name="NameTextBox" />
+            <TextBox x:Name="NameTextBox"
+                     TabIndex="0" />
             <Label Content="Lançamento:"
                    Style="{StaticResource FormLabelStyle}" />
-            <TextBox x:Name="ReleaseYearTextBox" />
+            <TextBox x:Name="ReleaseYearTextBox"
+                     TabIndex="1"/>
         </StackPanel>
 
         <Button x:Name="Save"
@@ -62,6 +66,7 @@
                 Grid.Column="0"
                 Grid.Row="4"
                 Grid.ColumnSpan="2"
-                Click="Save_Click" />
+                Click="Save_Click"
+                TabIndex="3"/>
     </Grid>
 </Window>

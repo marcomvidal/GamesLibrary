@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Coletânea de Jogos" Height="400" Width="400"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        FocusManager.FocusedElement="{Binding ElementName=SearchTextBox}">
 
     <Window.Resources>
         <Style x:Key="DockPanelStyle" TargetType="{x:Type FrameworkElement}">
@@ -24,13 +25,14 @@
             <Label Content="Busca:"
                    Style="{StaticResource FormLabelStyle}" />
             <TextBox x:Name="SearchTextBox"
-                     TextChanged="SearchTextBox_TextChanged" />
-            
+                     TextChanged="SearchTextBox_TextChanged"
+                     TabIndex="0"/>
         </StackPanel>
 
         <ListView x:Name="GamesListView"
                   Grid.Row="1"
-                  MouseDoubleClick="GameWindow_Open">
+                  MouseDoubleClick="GameWindow_Open"
+                  TabIndex="1">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="EditMenuItem"
@@ -69,6 +71,7 @@
         <Button x:Name="CreateButton"
                 Content="Cadastrar"
                 Grid.Row="2"
-                Click="GameWindow_Open"/>
+                Click="GameWindow_Open"
+                TabIndex="2" />
     </Grid>
 </Window>
